@@ -23,7 +23,7 @@ for page in range(1,43+1):
         link = ''
         for link in links:
             title = str.strip(link.get_text())
-            link = link.get('href')
+            link = 'https://quasarzone.com/'+link.get('href')
             #print(title+"                             "+link) 
             cur.execute("INSERT INTO cpu_table (title,link) VALUES (?,?)",(title,link))
         con.commit()
@@ -54,7 +54,7 @@ for page in range(1,23+1):
         link = ''
         for link in links:
             title = str.strip(link.get_text())
-            link = link.get('href')
+            link = 'https://quasarzone.com/'+link.get('href')
             #print(title+"                             "+link) 
             cur.execute("INSERT INTO gpu_table (title,link) VALUES (?,?)",(title,link))
         con.commit()

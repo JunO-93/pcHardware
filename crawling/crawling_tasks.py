@@ -20,7 +20,7 @@ def crawling_cpu(schedule=60,repeat =60*60*24):
             link = ''
             for link in links:
                 title = str.strip(link.get_text())
-                link = link.get('href')    
+                link = 'https://quasarzone.com/'+link.get('href')    
                 cur.execute("INSERT INTO cpu_table (title,link) VALUES (?,?)",(title,link))
             con.commit()    
         print('task_crawling_quasar_zone_cpu : ',type(links),len(links))
@@ -45,7 +45,7 @@ def crawling_gpu(schedule=60,repeat =60*60*24):
             link = ''
             for link in links:
                 title = str.strip(link.get_text())
-                link = link.get('href')    
+                link = 'https://quasarzone.com/'+link.get('href')    
                 cur.execute("INSERT INTO gpu_table (title,link) VALUES (?,?)",(title,link))
             con.commit()    
         print('task_crawling_quasar_zone_gpu : ',type(links),len(links))
