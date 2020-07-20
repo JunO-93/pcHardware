@@ -19,9 +19,9 @@ from crawling.crawling_tasks import task_hello,crawling_cpu,crawling_gpu
 
 rep = 60*60*24
 
-task_hello(schedule=5,repeat=5)
-#crawling_cpu(schedule=60, repeat=rep)
-#crawling_gpu(schedule=60, repeat=rep)
+# task_hello(schedule=5,repeat=5)
+crawling_cpu()
+crawling_gpu()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
