@@ -15,6 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from crawling.crawling_tasks import task_hello
+
+task_hello(schedule=5,repeat=5)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
