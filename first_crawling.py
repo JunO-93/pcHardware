@@ -5,7 +5,7 @@ import sqlite3
 # CPU / MB / RAM
 # CREATE cpu/mb/ram page table
 # Crawling 43 page 2020.01~
-
+# /27
 conn=sqlite3.connect('db.sqlite3')
 query='CREATE TABLE cpu_table (title TEXT,link TEXT)'
 conn.execute(query)
@@ -34,7 +34,7 @@ print('task_crawling_quasar_zone : ',type(links),len(links))
 # GPU
 # CREATE cpu/mb/ram page table
 # Crawling 23 page
-
+# /15
 conn=sqlite3.connect('db.sqlite3')
 query='CREATE TABLE gpu_table (title TEXT,link TEXT)'
 conn.execute(query)

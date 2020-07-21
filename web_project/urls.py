@@ -15,13 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from crawling.crawling_tasks import task_hello,crawling_cpu,crawling_gpu
+from crawling.crawling_tasks import task_hello
+from crawling.crawling_tasks import crawling_cpu
+from crawling.crawling_tasks import crawling_gpu
 
-rep = 60*60*24
-
-# task_hello(schedule=5,repeat=5)
-crawling_cpu()
-crawling_gpu()
+task_hello(schedule= 60,repeat=60*2)
+crawling_cpu(schedule=60, repeat=60*60*12)
+crawling_gpu(schedule=60, repeat=60*60*12)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
