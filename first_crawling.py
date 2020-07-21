@@ -61,3 +61,37 @@ for page in range(1,23+1):
     #print('page No: '+str(page))
 print('task_crawling_quasar_zone : ',type(links),len(links)) 
 
+
+
+# pc_estimate
+# CREATE pc_estimate page table
+# 
+
+conn=sqlite3.connect('db.sqlite3')
+query='CREATE TABLE pcEstimate_table (title TEXT,link TEXT)'
+conn.execute(query)
+conn.commit()
+conn.close()
+
+url = 'https://quasarzone.com/bbs/qf_hwjoin?page='
+
+for page in range(1,23+1):
+  res = requests.get(url+str(page))
+  if res.status_code ==200:
+    soup = BeautifulSoup(res.content,'html.parser')
+    links =soup.find_all('a',class_='subject-link')
+    with sqlite3.connect("db.sqlite3") as con:
+        cur = con.cursor()
+        title = ''
+        link = ''
+        for link in links:
+            title = str.strip(link.get_text())
+            link = 'https://quasarzone.com/'+link.get('href')
+            #print(title+"                             "+link) 
+            cur.execute("INSERT INTO pcEstimate_table (title,link) VALUES (?,?)",(title,link))
+        con.commit()
+    #print('page No: '+str(page))
+print('task_crawling_quasar_zone : ',type(links),len(links)) 
+
+
+

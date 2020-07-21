@@ -18,10 +18,12 @@ from django.urls import path
 from crawling.crawling_tasks import task_hello
 from crawling.crawling_tasks import crawling_cpu
 from crawling.crawling_tasks import crawling_gpu
+from crawling.crawling_tasks import crawling_pcEst
 
 task_hello(schedule= 60,repeat=60*2)
 crawling_cpu(schedule=60, repeat=60*60*12)
 crawling_gpu(schedule=60, repeat=60*60*12)
+crawling_pcEst(schedule=60, repeat=60*60*6)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

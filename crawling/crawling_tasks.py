@@ -58,3 +58,27 @@ def crawling_gpu(schedule=10,repeat =60*3):
     print("task_crawling_gpu",time_str)
 
 
+@background()
+def crawling_pcEst(schedule=10,repeat =60*3):
+
+    url = 'https://quasarzone.com/bbs/qf_hwjoin?page=1'
+    res = requests.get(url)
+    if res.status_code ==200:
+        soup = BeautifulSoup(res.content,'html.parser')
+        links =soup.find_all('a',class_='subject-link')
+        with sqlite3.connect("db.sqlite3") as con:
+            cur = con.cursor()
+            title = ''
+            link = ''
+            for link in links:
+                title = str.strip(link.get_text())
+                link = 'https://quasarzone.com/'+link.get('href')    
+                cur.execute("INSERT INTO pcEstimate_table (title,link) VALUES (?,?)",(title,link))
+            con.commit()    
+        print('task_crawling_quasar_zone_pcEstimate : ',type(links),len(links))
+  
+    time_tuple = time.localtime()
+    time_str = time.strftime("%m/%d/%Y, %H:%M:%S",time_tuple)
+    print("task_crawling_pcEstimate",time_str)
+
+
