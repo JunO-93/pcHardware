@@ -28,7 +28,7 @@ for page in range(1,43+1):
             cur.execute("INSERT INTO cpu_table (title,link) VALUES (?,?)",(title,link))
         con.commit()
     #print('page No: '+str(page))
-print('task_crawling_quasar_zone : ',type(links),len(links)) 
+print('task_crawling_quasar_zone_1 : ',type(links),len(links)) 
 
 
 # GPU
@@ -59,7 +59,7 @@ for page in range(1,23+1):
             cur.execute("INSERT INTO gpu_table (title,link) VALUES (?,?)",(title,link))
         con.commit()
     #print('page No: '+str(page))
-print('task_crawling_quasar_zone : ',type(links),len(links)) 
+print('task_crawling_quasar_zone_2 : ',type(links),len(links)) 
 
 
 
@@ -91,7 +91,4 @@ for page in range(1,23+1):
             cur.execute("INSERT INTO pcEstimate_table (title,link) VALUES (?,?)",(title,link))
         con.commit()
     #print('page No: '+str(page))
-print('task_crawling_quasar_zone : ',type(links),len(links)) 
-
-
-
+print('task_crawling_quasar_zone_3 : ',type(links),len(links)) 
